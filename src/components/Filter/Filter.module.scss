@@ -1,0 +1,28 @@
+.filter {
+  margin: 3.5rem 0rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+input[type='checkbox'] {
+  height: 1.25rem;
+  width: 1.25rem;
+  margin-right: 0.625rem;
+  margin-left: 0px;
+}
+
+label {
+  font-size: 0.875rem;
+  font-weight: normal;
+  color: #192024;
+  margin-right: 1.5rem;
+}
+
+.title {
+  font-size: 1rem;
+  color: #192024;
+}

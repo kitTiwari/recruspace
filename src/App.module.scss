@@ -1,0 +1,81 @@
+.container {
+  padding: 4.18rem 5.87rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-family: 'Helvetica Neue';
+  font-size: 2.75rem;
+  font-weight: 900;
+  margin: 0px;
+}
+
+.filter {
+  margin: 3.5rem 0rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+
+.subtitle {
+  font-size: 1rem;
+  color: #192024;
+  margin: 2px 0px;
+}
+
+.flex {
+  display: flex;
+}
+
+.card {
+  height: 15rem;
+  width: 18.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 0 -1px 4px 0 rgba(25, 32, 36, 0.04), 0 3px 6px 0 rgba(25, 32, 36, 0.16);
+  background-color: #fff;
+}
+
+.cards {
+  max-width: 100%;
+  display: grid;
+  grid-gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(18.75rem, 1fr));
+}
+
+.logo {
+  height: 2rem;
+  width: 2rem;
+  margin-right: 1.125rem;
+}
+
+.label {
+  font-size: 0.875rem;
+  font-weight: normal;
+  color: #192024;
+  margin: 2px 0px;
+}
+
+.sitelink {
+  @extend .label;
+  color: #5a6872;
+}
+
+.description {
+  display: none;
+}
+
+.card:hover {
+  border: 1px solid #000;
+  display: flex;
+  margin: 0px;
+  .description {
+    display: block;
+  }
+}
