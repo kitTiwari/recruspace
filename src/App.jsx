@@ -2,11 +2,13 @@ import React, { useCallback, useEffect, useState } from 'react'
 import styles from './App.module.scss'
 import Filter from './components/Filter/Filter'
 import Header from './components/Header/Header'
+import Pagination from './components/Pagination/Pagination'
 import { AirelineService } from './services/AirlineService'
 
 const App = () => {
   const [selectedFilters, setSelectedFilters] = useState([])
   const [filteredAirlines, setFilteredAirlines] = useState([])
+  const [pageSize, setPageSize] = useState(20)
 
   const filters = [
     { key: 'OW', name: 'Oneworld' },
@@ -16,8 +18,7 @@ const App = () => {
 
   const getAirlinData = useCallback(async () => {
     const airelinesData = await AirelineService().getAirlines()
-    const filterByAlliance = airelinesData.filter(airline => filters.some(el => el.key === airline.alliance))
-    setFilteredAirlines(filterByAlliance)
+    setFilteredAirlines(airelinesData)
   }, [])
 
   useEffect(() => {
@@ -37,11 +38,13 @@ const App = () => {
 
   const getFilteredData = () => {
     if (selectedFilters.length > 0) {
-      return filteredAirlines.filter(airline => selectedFilters.some(el => el === airline.alliance)) || []
+      return filteredAirlines.filter(airline => selectedFilters.some(el => el === airline.alliance)).slice(0, pageSize) || []
     } else {
-      return filteredAirlines
+      return filteredAirlines.slice(0, pageSize)
     }
   }
+
+  const onPageSizeChangeHandler = pageSizeValue => setPageSize(pageSizeValue)
 
   return (
     <>
@@ -69,6 +72,12 @@ const App = () => {
             })}
           </div>
         </div>
+        <Pagination
+          title={`Cards Per page`}
+          options={[20, 40, 60, 80, 100, filteredAirlines.length]}
+          onChange={onPageSizeChangeHandler}
+          value={pageSize}
+        />
       </section>
     </>
   )
